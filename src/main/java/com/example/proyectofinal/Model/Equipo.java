@@ -19,6 +19,10 @@ public class Equipo {
     @NotBlank(message = "La marca no puede estar vacía")
     @Column(nullable = false)
     private String marca;
+    
+    @NotBlank(message = "La ip no puede estar vacia")
+    @Column(nullable = false)
+    private String ip;
 
     @NotNull(message = "La fecha de ingreso no puede ser nula")
     @Column(nullable = false)
@@ -39,13 +43,14 @@ public class Equipo {
     public Equipo() {
     }
 
-    public Equipo(Long equipoId, String marca, Date fechaIngreso, String ubicacion, String estado, String nummeroSerie) {
+    public Equipo(Long equipoId, String marca, String ip, Date fechaIngreso, String ubicacion, String estado, String numeroSerie) {
         this.equipoId = equipoId;
         this.marca = marca;
+        this.ip = ip;
         this.fechaIngreso = fechaIngreso;
         this.ubicacion = ubicacion;
         this.estado = estado;
-        this.numeroSerie = nummeroSerie;
+        this.numeroSerie = numeroSerie;
     }
 
     public Long getEquipoId() {
@@ -62,6 +67,14 @@ public class Equipo {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+    
+    public void setIp(String ip){
+        this.ip = ip;
+    }
+    
+    public String getIp(){
+        return ip;
     }
 
     public Date getFechaIngreso() {
@@ -92,8 +105,8 @@ public class Equipo {
         return numeroSerie;
     }
 
-    public void setNumeroSerie(String nummeroSerie) {
-        this.numeroSerie = nummeroSerie;
+    public void setNumeroSerie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
     }
 
 }

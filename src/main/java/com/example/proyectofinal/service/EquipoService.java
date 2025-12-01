@@ -38,6 +38,9 @@ public class EquipoService {
         if (!StringUtils.hasText(equipo.getNumeroSerie())) {
             throw new IllegalArgumentException("El número de serie del equipo es obligatorio.");
         }
+        if (!StringUtils.hasText(equipo.getIp())) {
+            throw new IllegalArgumentException("La dirección IP del equipo es obligatoria.");
+        }
 
         // Validación 2: El número de serie debe ser único
         equipoRepository.findByNumeroSerie(equipo.getNumeroSerie()).ifPresent(e -> {
@@ -61,6 +64,7 @@ public class EquipoService {
         }
 
         equipo.setMarca(equipoDetails.getMarca());
+        equipo.setIp(equipoDetails.getIp());
         equipo.setUbicacion(equipoDetails.getUbicacion());
         equipo.setEstado(equipoDetails.getEstado());
         equipo.setNumeroSerie(equipoDetails.getNumeroSerie());
